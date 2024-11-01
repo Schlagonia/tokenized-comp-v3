@@ -14,11 +14,11 @@ import {UniswapV3Swapper} from "@periphery/swappers/UniswapV3Swapper.sol";
 contract CompoundV3Lender is BaseStrategy, UniswapV3Swapper {
     using SafeERC20 for ERC20;
 
-    address internal constant weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
+    address internal constant weth = 0x4200000000000000000000000000000000000006;
 
     // Rewards Stuff
     CometRewards public constant rewardsContract =
-        CometRewards(0x1B0e765F6224C21223AeA2af16c1C46E38885a40);
+        CometRewards(0x123964802e6ABabBE1Bc9547D72Ef1B69B00A6b1);
 
     Comet public immutable comet;
 
@@ -63,7 +63,7 @@ contract CompoundV3Lender is BaseStrategy, UniswapV3Swapper {
         // Base will be weth.
         base = weth;
         // UniV3 mainnet router.
-        router = 0xE592427A0AEce92De3Edee1F18E0157C05861564;
+        router = 0x2626664c2603336E57B271c5C0b26F421741e481;
         // Set the min amount for the swapper to sell
         minAmountToSell = 1e16;
     }

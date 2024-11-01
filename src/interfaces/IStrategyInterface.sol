@@ -18,4 +18,6 @@ interface IStrategyInterface is IStrategy, IUniswapV3Swapper {
     function swapBase() external;
 
     function rewardToken() external view returns (address);
+
+    function setPercentOut(uint256 _percentOut) external;
 }

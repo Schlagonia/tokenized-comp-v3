@@ -31,7 +31,7 @@ contract Setup is ExtendedTest, IEvents {
 
     CompoundV3LenderFactory public lenderFactory;
 
-    address public comet = 0xc3d688B66703497DAA19211EEdff47f25384cdc3;
+    address public comet = 0xb125E6687d4313864e53df431d5425969c15Eb2F;
 
     mapping(string => address) public tokenAddrs;
 
@@ -64,7 +64,7 @@ contract Setup is ExtendedTest, IEvents {
         );
 
         // Set asset
-        asset = ERC20(tokenAddrs["USDC"]);
+        asset = ERC20(0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913);
 
         // Set decimals
         decimals = asset.decimals();
@@ -91,7 +91,7 @@ contract Setup is ExtendedTest, IEvents {
                     address(asset),
                     "Tokenized Strategy",
                     comet,
-                    0xdbd020CAeF83eFd542f4De03e3cF0C28A4428bd5
+                    0x9DDa783DE64A9d1A60c49ca761EbE528C35BA428
                 )
             )
         );
@@ -100,7 +100,7 @@ contract Setup is ExtendedTest, IEvents {
         _strategy.acceptManagement();
 
         vm.prank(management);
-        _strategy.setUniFees(3000, 500);
+        _strategy.setUniFees(10000, 500);
 
         return address(_strategy);
     }

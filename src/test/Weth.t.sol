@@ -12,9 +12,9 @@ contract WethOperationTest is OperationTest {
     function setUp() public virtual override {
         super.setUp();
 
-        asset = ERC20(tokenAddrs["WETH"]);
+        asset = ERC20(0x4200000000000000000000000000000000000006);
 
-        comet = 0xA17581A9E3356d9A858b789D68B4d866e593aE94;
+        comet = 0x46e6b214b524310239732D51387075E0e70970bf;
 
         minFuzzAmount = minFuzzAmount * 1e10;
         maxFuzzAmount = maxFuzzAmount * 1e10;
@@ -28,7 +28,7 @@ contract WethOperationTest is OperationTest {
                 address(asset),
                 "Tokenized Strategy",
                 comet,
-                0x1B39Ee86Ec5979ba5C322b826B3ECb8C79991699
+                0x806b4Ac04501c29769051e42783cF04dCE41440b
             )
         );
 
@@ -36,7 +36,10 @@ contract WethOperationTest is OperationTest {
         strategy.acceptManagement();
 
         vm.prank(management);
-        strategy.setUniFees(3000, 500);
+        strategy.setUniFees(10000, 500);
+
+        vm.prank(management);
+        strategy.setPercentOut(0);
     }
 }
 
@@ -44,9 +47,9 @@ contract WethShutdownTest is ShutdownTest {
     function setUp() public virtual override {
         super.setUp();
 
-        asset = ERC20(tokenAddrs["WETH"]);
+        asset = ERC20(0x4200000000000000000000000000000000000006);
 
-        comet = 0xA17581A9E3356d9A858b789D68B4d866e593aE94;
+        comet = 0x46e6b214b524310239732D51387075E0e70970bf;
 
         minFuzzAmount = minFuzzAmount * 1e10;
         maxFuzzAmount = maxFuzzAmount * 1e10;
@@ -60,7 +63,7 @@ contract WethShutdownTest is ShutdownTest {
                 address(asset),
                 "Tokenized Strategy",
                 comet,
-                0x1B39Ee86Ec5979ba5C322b826B3ECb8C79991699
+                0x9DDa783DE64A9d1A60c49ca761EbE528C35BA428
             )
         );
 
@@ -68,6 +71,6 @@ contract WethShutdownTest is ShutdownTest {
         strategy.acceptManagement();
 
         vm.prank(management);
-        strategy.setUniFees(3000, 500);
+        strategy.setUniFees(10000, 500);
     }
 }

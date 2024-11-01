@@ -22,13 +22,13 @@ contract OperationTest is Setup {
     function test_switchBase(uint256 _amount) public virtual {
         vm.assume(_amount > minFuzzAmount && _amount < maxFuzzAmount);
 
-        assertEq(strategy.base(), 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+        assertEq(strategy.base(), 0x4200000000000000000000000000000000000006);
 
         vm.expectRevert("!management");
         vm.prank(user);
         strategy.swapBase();
 
-        assertEq(strategy.base(), 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+        assertEq(strategy.base(), 0x4200000000000000000000000000000000000006);
 
         vm.prank(management);
         strategy.swapBase();
